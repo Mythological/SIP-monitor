@@ -13,14 +13,14 @@ function call {
   -l 1 \
   -m 1 \
   -trace_err \
-  -i 172.16.1.247 \
+  -i 172.1.1.247 \
   -rtp_echo \
   -s "$2" 
 }
 
 # call to pbx on DID 2451
 
-call "172.17.5.10" "2451"
+call "172.1.15.10" "2451"
 
 # if exit = 0 write to log 0, else check again and write 1 to log
 
@@ -31,7 +31,7 @@ if [ "${?}" -eq 0 ]; then
 else
   echo "pbx error"
   result=1
-  call "172.17.5.10" "2451"
+  call "172.1.15.10" "2451"
 
   if [ "${?}" -eq 0 ]; then
       echo "pbx ok"
@@ -53,7 +53,7 @@ sleep 5
 
 # check another PBX (optional)
 
-call "172.16.1.250" "100"
+call "172.1.1.250" "100"
 
 if [ "${?}" -eq 0 ]; then
   echo "pbx ok"
